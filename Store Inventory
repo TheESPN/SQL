@@ -1,28 +1,35 @@
--Create store inventory
-CREATE TABLE store_inventory(id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER, shelf INTEGER);
+--Create a grocery store database
 
--Insert values into store_inventory
-INSERT INTO store_inventory VALUES (1, "lacrosse heads", 100, 3,1);
-INSERT INTO store_inventory VALUES (2, "string", 200, 2,1);
-INSERT INTO store_inventory VALUES (3, "poles", 100, 3, 2);
+CREATE TABLE store (id INTEGER PRIMARY KEY, item TEXT, section TEXT, price INTEGER, popularity INTEGER);
 
---what is the avg quantity of items in aisle 3? 
-SELECT AVG(quantity) "avg quantity in aisle 3"
-FROM store
-where section='quantity'; 
+INSERT INTO store VALUES (1, "milk", "produce", 2.99, 50);
+INSERT INTO store VALUES (2, "banana", "produce", 0.99, 95);
+INSERT INTO store VALUES (3, "qtips", "hygiene", 2.99, 55);
+INSERT INTO store VALUES (4, "beans", "bulk", 0.99, 50);
+INSERT INTO store VALUES (5, "beyond burgers", "meat", 4.99, 65);
+INSERT INTO store VALUES (6, "salsa", "fresh", 3.25, 43);
+INSERT INTO store VALUES (7, "hummus", "fresh", 2.99, 35);
+INSERT INTO store VALUES (8, "papaya", "hygiene", 2.99, 50);
+INSERT INTO store VALUES (9, "chick'n nuggs", "meat", 4.99, 75);
+INSERT INTO store VALUES (10, "peas", "frozen", 0.99, 25);
+INSERT INTO store VALUES (11, "smoothie berries", "frozen", 2.99, 33);
+INSERT INTO store VALUES (12, "granola", "bulk", 1.99, 80);
+INSERT INTO store VALUES (13, "vitamin D", "health", 8.99,29);
+INSERT INTO store VALUES (14, "nutritional yeast", "health", 2.99, 26);
+INSERT INTO store VALUES (15, "popcorn", "snacks", 1.99, 47);
 
--Create statistic about where inventory is from, i didnt add this to table just example.
-CREATE TABLE country (model text primary key, country text);
-INSERT INTO country VALUES ("A","BELGIUM");
-INSERT INTO country VALUES ("B", "USA");
-INSERT INTO country VALUES ("C", "MEXICO");
-
---display the database ordered by quantity. 
+--display the database ordered by price. 
 SELECT * FROM store
-ORDER BY quantity desc; 
+ORDER BY price desc; 
 
-SELECT * FROM store_inventory
-ORDER BY quantity desc;
-SELECT * FROM country;
+--what is the avg price of items in the bulk section? 
+SELECT AVG(price) "avg bulk item price"
+FROM store
+where section='bulk'; 
 
+--what are the most 5 popular items? 
+SELECT item, price, popularity
+FROM store
+order by popularity desc
+limit 5; 
 
