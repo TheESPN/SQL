@@ -1,0 +1,26 @@
+CREATE TABLE movie_stars(id INTEGER PRIMARY KEY, name TEXT, birthplace TEXT);
+
+INSERT INTO movie_stars(name, birthplace) VALUES ("Leonardo Dicaprio","Los Angeles, CA");
+INSERT INTO movie_stars(name, birthplace) VALUES ("Brad Pitt", "Shawnee, OK");
+INSERT INTO movie_stars(name, birthplace) VALUES ("Denzel Washington", "Mount Vernon, NY");
+INSERT INTO movie_stars(name, birthplace) VALUES ("Meryl Streep", "Summit, NY");
+INSERT INTO movie_stars(name, birthplace) VALUES ("Daniel-Day Lewis", "Kensington, London");
+INSERT INTO movie_stars(name, birthplace) VALUES ("Jamie Foxx", "Terrell, TX");
+INSERT INTO movie_stars(name, birthplace) VALUES ("Jack Nicholson", "Neptune City, NJ");
+
+
+CREATE TABLE awards(id INTEGER PRIMARY KEY AUTOINCREMENT, movie_star_id INTEGER, oscars INTEGER, nominations INTEGER, movies_acted_in INTEGER);
+
+INSERT INTO awards(movie_star_id, oscars, nominations, movies_acted_in) VALUES (1,"1","7", "29");
+INSERT INTO awards(movie_star_id, oscars, nominations, movies_acted_in) VALUES (2,"2","7","48");
+INSERT INTO awards(movie_star_id, oscars, nominations, movies_acted_in) VALUES (3,"2","10","58");
+INSERT INTO awards(movie_star_id, oscars, nominations, movies_acted_in) VALUES (4,"3","21","70");
+INSERT INTO awards(movie_star_id, oscars, nominations, movies_acted_in) VALUES (5,"3","6","24");
+INSERT INTO awards(movie_star_id, oscars, nominations, movies_acted_in) VALUES (6,"1","2","51");
+INSERT INTO awards(movie_star_id, oscars, nominations, movies_acted_in) VALUES (7,"3","12","57");
+
+
+SELECT m.name, a.movie_star_id, a.oscars, a.nominations, a.movies_acted_in
+FROM movie_stars m
+JOIN awards a
+ON m.id=a.movie_star_id;
