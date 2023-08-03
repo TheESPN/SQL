@@ -23,4 +23,5 @@ INSERT INTO awards(movie_star_id, oscars, nominations, movies_acted_in) VALUES (
 SELECT m.name, a.movie_star_id, a.oscars, a.nominations, a.movies_acted_in
 FROM movie_stars m
 JOIN awards a
-ON m.id=a.movie_star_id;
+ON m.id=a.movie_star_id
+ORDER BY oscars desc;
